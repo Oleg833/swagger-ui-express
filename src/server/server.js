@@ -3,6 +3,7 @@ const express = require("express");
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("../../swagger.json");
+// app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocument));
 
 const authRouter = require("../auth/auth.router");
 require("dotenv").config({ path: path.join(__dirname, "../../.env") });
@@ -29,11 +30,6 @@ module.exports = class Server {
       swaggerUi.setup(swaggerDocument)
     );
   }
-  // app.use(
-  //     "/api-docs",
-  //     swaggerUi.serve,
-  //     swaggerUi.setup(swaggerDocument)
-  //   );
 
   initErrorHandling() {
     this.app.use((err, req, res, next) => {
